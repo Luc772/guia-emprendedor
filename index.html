@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía del Emprendedor · Financiamiento para Pymes del Biobío</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFE7D6;
+    --paper-dark:#E4DAC4;
+    --ink:#1B2A28;
+    --pine:#31503B;
+    --pine-light:#4A6D53;
+    --gold:#C08F2E;
+    --rust:#A8432B;
+    --line: rgba(27,42,40,0.18);
+    --card:#FBF8F0;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.55;
+    background-image:
+      repeating-linear-gradient(transparent, transparent 38px, var(--line) 39px);
+  }
+  h1,h2,h3,.display{font-family:'Fraunces', serif;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:var(--pine);}
+
+  /* ===== HEADER ===== */
+  header.hero{
+    padding:64px 24px 40px;
+    max-width:980px;
+    margin:0 auto;
+    border-bottom:2px solid var(--ink);
+  }
+  .stamp{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--pine);
+    border:1.5px solid var(--pine);
+    border-radius:999px;
+    padding:5px 14px;
+    transform:rotate(-1.5deg);
+  }
+  h1.display{
+    font-size:clamp(34px,6vw,58px);
+    font-weight:700;
+    margin:22px 0 8px;
+    line-height:1.03;
+    letter-spacing:-0.01em;
+  }
+  h1.display em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--pine);
+  }
+  .hero p.lede{
+    font-size:18px;
+    max-width:640px;
+    color:#33413E;
+    margin-top:14px;
+  }
+  .hero-meta{
+    margin-top:28px;
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:#5A6560;
+  }
+  .hero-meta b{color:var(--ink);}
+
+  /* ===== NAV ===== */
+  nav.tabs{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--paper);
+    border-bottom:2px solid var(--ink);
+    padding:0 24px;
+  }
+  .tabs-inner{
+    max-width:980px;
+    margin:0 auto;
+    display:flex;
+    gap:2px;
+    overflow-x:auto;
+  }
+  .tab-btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.03em;
+    background:none;
+    border:none;
+    padding:16px 14px;
+    cursor:pointer;
+    color:#5A6560;
+    white-space:nowrap;
+    border-bottom:3px solid transparent;
+    transition:color .15s;
+  }
+  .tab-btn:hover{color:var(--ink);}
+  .tab-btn.active{color:var(--pine);border-bottom-color:var(--pine);font-weight:600;}
+
+  main{max-width:980px;margin:0 auto;padding:44px 24px 120px;}
+  section.panel{display:none;}
+  section.panel.active{display:block;animation:fade .35s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--rust);
+    margin-bottom:10px;
+  }
+  h2.section-title{
+    font-size:clamp(26px,4vw,36px);
+    margin:0 0 18px;
+    font-weight:600;
+  }
+  p.intro{max-width:640px;color:#33413E;margin-bottom:32px;}
+
+  /* cards */
+  .grid{display:grid;gap:18px;}
+  .grid-2{grid-template-columns:1fr 1fr;}
+  .grid-3{grid-template-columns:repeat(3,1fr);}
+  @media(max-width:720px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+
+  .card{
+    background:var(--card);
+    border:1.5px solid var(--ink);
+    border-radius:2px;
+    padding:22px;
+    position:relative;
+  }
+  .card h3{margin:0 0 8px;font-size:19px;}
+  .card p{margin:0;font-size:14.5px;color:#3A4744;}
+  .card .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#fff;
+    background:var(--pine);
+    padding:3px 9px;
+    border-radius:999px;
+    display:inline-block;
+    margin-bottom:12px;
+  }
+  .card.risk .tag{background:var(--rust);}
+  .card.gold .tag{background:var(--gold);}
+
+  .divider{
+    border:none;border-top:1.5px dashed var(--line);
+    margin:40px 0;
+  }
+
+  /* CAE explainer */
+  .cae-box{
+    border:2px solid var(--ink);
+    background:var(--card);
+    padding:26px;
+    display:flex;
+    gap:24px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .cae-box .big{
+    font-family:'Fraunces', serif;
+    font-size:56px;
+    font-weight:700;
+    color:var(--pine);
+    line-height:1;
+  }
+  .cae-box .items{font-size:13.5px;color:#3A4744;flex:1;min-width:220px;}
+  .cae-box .items span{display:block;padding:3px 0;border-bottom:1px dotted var(--line);}
+
+  /* simulator */
+  .simulator{
+    border:2px solid var(--ink);
+    background:var(--card);
+    padding:26px;
+  }
+  .offer-row{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr auto;
+    gap:10px;
+    align-items:center;
+    margin-bottom:10px;
+  }
+  @media(max-width:640px){.offer-row{grid-template-columns:1fr 1fr;}}
+  .offer-row input{
+    font-family:'IBM Plex Mono', monospace;
+    padding:9px 10px;
+    border:1.5px solid var(--ink);
+    background:#fff;
+    border-radius:2px;
+    font-size:13.5px;
+    width:100%;
+  }
+  .offer-row .remove{
+    background:none;border:none;color:var(--rust);cursor:pointer;font-size:18px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    background:var(--pine);
+    color:#fff;
+    border:none;
+    padding:11px 18px;
+    border-radius:2px;
+    cursor:pointer;
+    text-transform:uppercase;
+  }
+  .btn.secondary{background:none;border:1.5px solid var(--ink);color:var(--ink);}
+  .btn:hover{opacity:0.88;}
+  #offerResult{margin-top:18px;font-size:14.5px;}
+  .winner-row{
+    background:#E4EFE3;
+    border-left:4px solid var(--pine);
+    padding:12px 14px;
+    margin-top:14px;
+    font-size:14px;
+  }
+
+  /* decision tool */
+  .decision-box{
+    border:2px solid var(--ink);
+    background:var(--card);
+    padding:30px;
+    min-height:260px;
+  }
+  .decision-box .q{font-size:19px;font-weight:600;margin-bottom:20px;font-family:'Fraunces',serif;}
+  .decision-box .options{display:flex;flex-direction:column;gap:10px;}
+  .opt-btn{
+    text-align:left;
+    padding:14px 16px;
+    border:1.5px solid var(--ink);
+    background:#fff;
+    border-radius:2px;
+    cursor:pointer;
+    font-size:14.5px;
+    font-family:'Public Sans',sans-serif;
+    transition:background .12s, transform .12s;
+  }
+  .opt-btn:hover{background:var(--paper-dark);}
+  .progress-dots{display:flex;gap:6px;margin-bottom:22px;}
+  .progress-dots span{width:7px;height:7px;border-radius:50%;background:var(--line);}
+  .progress-dots span.done{background:var(--pine);}
+
+  .result-card{
+    border:2px solid var(--pine);
+    background:#F2F5EE;
+    padding:24px;
+  }
+  .result-card h3{margin-top:0;font-size:23px;}
+  .result-card ul{margin:12px 0 0;padding-left:20px;font-size:14.5px;}
+  .result-card li{margin-bottom:6px;}
+
+  /* glossary / flashcards */
+  .flash{
+    perspective:1000px;
+    height:150px;
+    cursor:pointer;
+  }
+  .flash-inner{
+    position:relative;
+    width:100%;height:100%;
+    transition:transform .5s;
+    transform-style:preserve-3d;
+  }
+  .flash.flipped .flash-inner{transform:rotateY(180deg);}
+  .flash-face{
+    position:absolute;inset:0;
+    backface-visibility:hidden;
+    border:1.5px solid var(--ink);
+    border-radius:2px;
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .flash-face.front{background:var(--pine);color:#fff;}
+  .flash-face.front span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;}
+  .flash-face.front b{font-family:'Fraunces',serif;font-size:20px;font-weight:600;margin-top:6px;}
+  .flash-face.back{background:#fff;transform:rotateY(180deg);font-size:13.5px;color:#33413E;}
+
+  /* comparison table */
+  table.compare{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table.compare th,table.compare td{
+    border:1.5px solid var(--ink);
+    padding:11px 12px;
+    text-align:left;
+    vertical-align:top;
+  }
+  table.compare th{
+    background:var(--pine);
+    color:#fff;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  table.compare tr:nth-child(even) td{background:var(--card);}
+
+  .checklist-item{
+    display:flex;gap:12px;align-items:flex-start;
+    padding:14px 0;border-bottom:1px dotted var(--line);
+  }
+  .checklist-item .num{
+    font-family:'Fraunces',serif;font-weight:700;color:var(--pine);font-size:20px;flex-shrink:0;
+  }
+  footer{
+    text-align:center;
+    padding:40px 24px 60px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    color:#6B756F;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="stamp">● Región del Biobío · Pymes y emprendedores</span>
+  <h1 class="display">Guía del <em>Emprendedor</em><br>para financiar tu negocio</h1>
+  <p class="lede">Antes de pedir un peso prestado, entiende las reglas del juego. Esta guía reúne, de forma interactiva, los dos caminos de financiamiento en Chile: el privado (créditos que se devuelven) y el público (fondos que no se devuelven).</p>
+  <div class="hero-meta">
+    <div><b>2</b> mundos de financiamiento</div>
+    <div><b>6</b> instituciones clave</div>
+    <div><b>1</b> simulador de ruta</div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="tabs-inner" id="tabsInner">
+    <button class="tab-btn active" data-panel="resumen">Resumen</button>
+    <button class="tab-btn" data-panel="credito">Crédito privado</button>
+    <button class="tab-btn" data-panel="cae">La CAE</button>
+    <button class="tab-btn" data-panel="publico">Fondos públicos</button>
+    <button class="tab-btn" data-panel="ruta">Ruta de decisión</button>
+    <button class="tab-btn" data-panel="glosario">Glosario</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ===================== RESUMEN ===================== -->
+  <section class="panel active" id="resumen">
+    <div class="eyebrow">Punto de partida</div>
+    <h2 class="section-title">Dos mundos, una decisión</h2>
+    <p class="intro">Todo financiamiento para tu negocio viene de una de estas dos fuentes. Confundirlas es el error más caro que puedes cometer.</p>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <span class="tag">Se devuelve</span>
+        <h3>Financiamiento privado y social</h3>
+        <p>Créditos bancarios, microcréditos y garantías estatales como FOGAPE. Recibes el dinero rápido (días o semanas), pero pagas intereses y comisiones, y debes devolverlo sí o sí.</p>
+      </div>
+      <div class="card gold">
+        <span class="tag">No se devuelve</span>
+        <h3>Financiamiento público</h3>
+        <p>Subsidios de SERCOTEC y CORFO entregados por concurso. No generan deuda, pero exigen cofinanciamiento de tu parte, rendición de gastos y meses de espera.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="eyebrow">Antes de pedir cualquier crédito</div>
+    <h2 class="section-title" style="font-size:24px;">Buenas prácticas y errores críticos</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3 style="font-size:16px;color:var(--pine);">✓ Haz esto</h3>
+        <ul style="padding-left:18px;font-size:14.5px;color:#3A4744;">
+          <li>Cotiza por escrito en al menos 3 instituciones y compara la CAE.</li>
+          <li>Usa una cuenta bancaria exclusiva para el negocio.</li>
+          <li>Haz coincidir el plazo del crédito con su uso: corto plazo (6–12 meses) para capital de trabajo, largo plazo (24–48 meses) para inversión.</li>
+        </ul>
+      </div>
+      <div class="card risk">
+        <h3 style="font-size:16px;color:var(--rust);">✕ Evita esto</h3>
+        <ul style="padding-left:18px;font-size:14.5px;color:#3A4744;">
+          <li>Usar dinero caro de emergencia (tarjetas, sobregiro) para inversiones largas.</li>
+          <li>Pedir préstamos para tapar pérdidas constantes del negocio.</li>
+          <li>Comprometer cuotas que superen el 30% de tu Flujo de Caja Libre.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:30px;text-align:center;">
+      <button class="btn" onclick="goTab('ruta')">Descubre qué financiamiento te conviene →</button>
+    </div>
+  </section>
+
+  <!-- ===================== CRÉDITO PRIVADO ===================== -->
+  <section class="panel" id="credito">
+    <div class="eyebrow">Parte I</div>
+    <h2 class="section-title">Financiamiento privado y social</h2>
+    <p class="intro">Son préstamos: recibes el dinero ahora y lo devuelves en cuotas, con intereses y comisiones. La institución que elijas cambia radicalmente el riesgo que asumes.</p>
+
+    <div class="card risk" style="margin-bottom:24px;">
+      <span class="tag">Alerta</span>
+      <h3>El peligro del crédito de consumo</h3>
+      <p>Mezcla tus finanzas personales con las del negocio. Si el negocio fracasa, puedes ser demandado personalmente: riesgo de embargo de tu casa, vehículo o ahorros, y de caer en DICOM. Como no exige garantías reales, sus tasas son de las más altas del mercado.</p>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif;">Dos opciones más seguras para tu Pyme</h3>
+    <div class="grid grid-2">
+      <div class="card">
+        <span class="tag">Recién comienzas</span>
+        <h3>Microcrédito · Modelo Banigualdad</h3>
+        <p>Pensado para negocios informales o que recién parten. Funciona con créditos grupales basados en la confianza y exige asistir a capacitaciones de educación financiera.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Ya formalizado</span>
+        <h3>FOGAPE · BancoEstado</h3>
+        <p>Para negocios formalizados sin bienes que dejar en garantía. El Estado avala entre el 70% y el 85% de la deuda ante el banco, lo que facilita la aprobación, regula la tasa de interés y mejora los plazos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CAE ===================== -->
+  <section class="panel" id="cae">
+    <div class="eyebrow">El número que manda</div>
+    <h2 class="section-title">Carga Anual Equivalente (CAE)</h2>
+    <p class="intro">Es el indicador más importante para comparar créditos: muestra, en un solo porcentaje, el costo real y total del crédito en un año.</p>
+
+    <div class="cae-box" style="margin-bottom:28px;">
+      <div class="big mono">CAE</div>
+      <div class="items">
+        <span>Tasa de interés</span>
+        <span>Gastos de notaría</span>
+        <span>Impuestos</span>
+        <span>Comisiones</span>
+        <span>Seguros asociados</span>
+      </div>
+      <p style="flex:2;min-width:220px;font-size:14.5px;">Al comparar créditos, exige siempre el <b>mismo monto y el mismo plazo</b> en cada cotización — solo así la CAE es comparable entre bancos. Elige la CAE más baja.</p>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif;">Simulador: compara tus cotizaciones</h3>
+    <p style="font-size:14px;color:#3A4744;max-width:600px;">Ingresa el nombre de la institución y la CAE que te informaron por escrito. El simulador marca la mejor opción — recuerda que solo es válido si el monto y el plazo cotizado son iguales en todas.</p>
+
+    <div class="simulator" id="simulator">
+      <div id="offerRows"></div>
+      <div style="display:flex;gap:10px;margin-top:6px;flex-wrap:wrap;">
+        <button class="btn secondary" onclick="addOfferRow()">+ Agregar cotización</button>
+        <button class="btn" onclick="compareOffers()">Comparar CAE</button>
+      </div>
+      <div id="offerResult"></div>
+    </div>
+  </section>
+
+  <!-- ===================== FONDOS PÚBLICOS ===================== -->
+  <section class="panel" id="publico">
+    <div class="eyebrow">Parte II</div>
+    <h2 class="section-title">Financiamiento público: fondos no reembolsables</h2>
+    <p class="intro">Son subsidios estatales que no se devuelven ni generan deuda, pero se ganan compitiendo por puntaje y exigen rendir cada gasto.</p>
+
+    <div class="grid grid-2" style="margin-bottom:28px;">
+      <div class="card gold">
+        <span class="tag">Regla clave</span>
+        <h3>Cofinanciamiento</h3>
+        <p>El Estado nunca financia el 100%. Debes aportar entre el 10% y el 20% del valor neto del proyecto con recursos propios.</p>
+      </div>
+      <div class="card gold">
+        <span class="tag">Regla clave</span>
+        <h3>El IVA no está cubierto</h3>
+        <p>Por ley, los fondos públicos no pagan el IVA de tus compras o servicios. Ese costo lo asumes tú.</p>
+      </div>
+    </div>
+
+    <table class="compare">
+      <thead>
+        <tr><th>Institución</th><th>Enfoque</th><th>Fondos destacados</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>SERCOTEC</b></td>
+          <td>Micro y pequeñas empresas</td>
+          <td>Capital Semilla Emprende (ideas no formalizadas) · Capital Abeja (mujeres emprendedoras) · Fondo CRECE (empresas formales en expansión)</td>
+        </tr>
+        <tr>
+          <td><b>CORFO</b></td>
+          <td>Proyectos de mayor escala, startups e innovación tecnológica</td>
+          <td>Semilla Inicia · Semilla Expande · Súmate a Innovar · Crea y Valida</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="divider">
+    <h3 style="font-family:'Fraunces',serif;">Tiempos: la variable que todos olvidan</h3>
+    <p style="font-size:14.5px;color:#3A4744;max-width:640px;">Un crédito se aprueba en <b>días o semanas</b>. Un fondo público tarda <b>meses</b> en evaluarse y entregarse. Si necesitas resolver una emergencia esta semana, un fondo concursable no es la herramienta.</p>
+  </section>
+
+  <!-- ===================== RUTA DE DECISIÓN ===================== -->
+  <section class="panel" id="ruta">
+    <div class="eyebrow">Herramienta</div>
+    <h2 class="section-title">¿Qué financiamiento me conviene?</h2>
+    <p class="intro">Responde 3 preguntas cortas y te mostramos la ruta recomendada según tu etapa y urgencia.</p>
+
+    <div class="progress-dots" id="progressDots"></div>
+    <div class="decision-box" id="decisionBox"></div>
+
+    <div style="margin-top:16px;">
+      <button class="btn secondary" onclick="restartDecision()">↺ Volver a empezar</button>
+    </div>
+  </section>
+
+  <!-- ===================== GLOSARIO ===================== -->
+  <section class="panel" id="glosario">
+    <div class="eyebrow">Términos clave</div>
+    <h2 class="section-title">Glosario en fichas</h2>
+    <p class="intro">Toca una ficha para ver la definición.</p>
+
+    <div class="grid grid-3" id="flashGrid"></div>
+
+    <hr class="divider">
+    <div class="eyebrow">Lista de control</div>
+    <h3 style="font-family:'Fraunces',serif;font-size:22px;margin-bottom:4px;">Antes de postular o pedir un crédito</h3>
+    <div id="checklist"></div>
+  </section>
+
+</main>
+
+<footer>
+  GUÍA DEL EMPRENDEDOR — REGIÓN DEL BIOBÍO · CONTENIDO EDUCATIVO, NO ES ASESORÍA FINANCIERA FORMAL
+</footer>
+
+<script>
+/* ============ TABS ============ */
+const tabBtns = document.querySelectorAll('.tab-btn');
+const panels = document.querySelectorAll('.panel');
+function goTab(id){
+  tabBtns.forEach(b=>b.classList.toggle('active', b.dataset.panel===id));
+  panels.forEach(p=>p.classList.toggle('active', p.id===id));
+  window.scrollTo({top: document.querySelector('nav.tabs').offsetTop, behavior:'smooth'});
+}
+tabBtns.forEach(b=>b.addEventListener('click',()=>goTab(b.dataset.panel)));
+
+/* ============ CAE SIMULATOR ============ */
+let offerCount = 0;
+function addOfferRow(name='', cae=''){
+  offerCount++;
+  const row = document.createElement('div');
+  row.className='offer-row';
+  row.id = 'row'+offerCount;
+  row.innerHTML = `
+    <input type="text" placeholder="Institución (ej: Banco X)" value="${name}" class="oname">
+    <input type="number" step="0.01" placeholder="CAE %" value="${cae}" class="ocae">
+    <input type="text" placeholder="Monto y plazo (ej: $3M / 24m)" class="onote">
+    <button class="remove" onclick="document.getElementById('row${offerCount}').remove()">✕</button>
+  `;
+  document.getElementById('offerRows').appendChild(row);
+}
+addOfferRow('Banigualdad','');
+addOfferRow('FOGAPE BancoEstado','');
+addOfferRow();
+
+function compareOffers(){
+  const rows = document.querySelectorAll('.offer-row');
+  let offers = [];
+  rows.forEach(r=>{
+    const name = r.querySelector('.oname').value.trim();
+    const cae = parseFloat(r.querySelector('.ocae').value);
+    if(name && !isNaN(cae)) offers.push({name, cae});
+  });
+  const resultDiv = document.getElementById('offerResult');
+  if(offers.length < 2){
+    resultDiv.innerHTML = `<div class="winner-row" style="border-color:var(--rust);background:#F5E6E1;">Ingresa al menos dos cotizaciones con su CAE para comparar.</div>`;
+    return;
+  }
+  offers.sort((a,b)=>a.cae-b.cae);
+  const best = offers[0];
+  let html = `<div class="winner-row"><b>${best.name}</b> tiene la CAE más baja: <span class="mono">${best.cae}%</span>. Es la opción más económica de las que ingresaste — siempre que el monto y el plazo cotizado sean iguales entre todas.</div>`;
+  html += '<table class="compare" style="margin-top:14px;"><thead><tr><th>Institución</th><th>CAE</th></tr></thead><tbody>';
+  offers.forEach(o=>{
+    html += `<tr><td>${o.name}${o.name===best.name?' ✓':''}</td><td class="mono">${o.cae}%</td></tr>`;
+  });
+  html += '</tbody></table>';
+  resultDiv.innerHTML = html;
+}
+
+/* ============ DECISION TREE ============ */
+const tree = {
+  start: {
+    q: "¿Necesitas el dinero de forma urgente (esta semana o este mes)?",
+    options: [
+      {label:"Sí, es una emergencia", next:"urgente"},
+      {label:"No, puedo esperar y planificar", next:"formalizado"}
+    ]
+  },
+  urgente: {
+    q: "¿Tu negocio está formalizado (con inicio de actividades)?",
+    options: [
+      {label:"Sí, está formalizado", next:"result_fogape"},
+      {label:"No, es informal o recién parte", next:"result_banigualdad"}
+    ]
+  },
+  formalizado: {
+    q: "¿Tu negocio ya está formalizado?",
+    options: [
+      {label:"No, es una idea o recién comienza", next:"result_semilla"},
+      {label:"Sí, ya está formalizado", next:"crecimiento"}
+    ]
+  },
+  crecimiento: {
+    q: "¿Tu proyecto es de innovación tecnológica o tiene alto potencial de escalar?",
+    options: [
+      {label:"Sí, es innovador / escalable", next:"result_corfo"},
+      {label:"No, quiero crecer o invertir en mi negocio actual", next:"garantia"}
+    ]
+  },
+  garantia: {
+    q: "¿Tienes bienes propios para dejar como garantía del crédito?",
+    options: [
+      {label:"No tengo garantías", next:"result_fogape2"},
+      {label:"Sí tengo garantías", next:"result_crece"}
+    ]
+  }
+};
+
+const results = {
+  result_fogape: {
+    title: "FOGAPE · BancoEstado",
+    desc: "Es tu ruta más rápida y segura: el Estado avala entre el 70% y el 85% de la deuda, lo que agiliza la aprobación aunque no tengas garantías propias.",
+    tips: ["Reúne tu inicio de actividades y estados de cuenta antes de ir al banco.", "Cotiza la CAE en más de una sucursal o banco.", "Nunca uses crédito de consumo personal para el negocio: mezcla tu patrimonio con el del negocio."]
+  },
+  result_banigualdad: {
+    title: "Microcrédito · Modelo Banigualdad",
+    desc: "Para negocios informales que necesitan liquidez rápida, este microcrédito grupal es más accesible que la banca tradicional y no exige formalización previa.",
+    tips: ["Prepárate para asistir a capacitaciones de educación financiera: son parte del modelo.", "Evita el crédito de consumo: sus tasas son de las más altas del mercado.", "Piensa en formalizar tu negocio a mediano plazo para acceder a mejores condiciones."]
+  },
+  result_semilla: {
+    title: "Capital Semilla Emprende · SERCOTEC",
+    desc: "Diseñado justo para ideas de negocio que aún no se formalizan. Es un fondo no reembolsable: no genera deuda.",
+    tips: ["Ahorra el cofinanciamiento (10%–20% del proyecto) antes de postular.", "Considera que el fondo no cubre el IVA de tus compras.", "Si eres mujer, revisa también Capital Abeja, exclusivo para emprendedoras."]
+  },
+  result_corfo: {
+    title: "CORFO · Fondos de innovación",
+    desc: "Semilla Inicia, Semilla Expande, Súmate a Innovar o Crea y Valida son la ruta correcta para proyectos con base tecnológica o potencial de escalar más allá del negocio local.",
+    tips: ["Planifica con meses de anticipación: los fondos públicos tardan en evaluarse.", "Ten listo el cofinanciamiento y el dinero para cubrir el IVA.", "Prepara un proyecto competitivo: postulas contra otros proyectos por puntaje."]
+  },
+  result_fogape2: {
+    title: "FOGAPE · BancoEstado",
+    desc: "Al no tener garantías propias, FOGAPE es tu mejor puerta de entrada al crédito formal: el aval estatal reemplaza la garantía que no tienes.",
+    tips: ["Haz coincidir el plazo del crédito con el uso: 24–48 meses si es para invertir en maquinaria o remodelación.", "No comprometas cuotas que superen el 30% de tu Flujo de Caja Libre.", "Compara la CAE en al menos 3 instituciones antes de firmar."]
+  },
+  result_crece: {
+    title: "Fondo CRECE · SERCOTEC (o crédito con garantía)",
+    desc: "Con garantías propias y negocio formal, puedes optar tanto a un crédito bancario con mejor tasa como al Fondo CRECE de SERCOTEC para financiar tu expansión sin generar deuda.",
+    tips: ["Si eliges el fondo público, recuerda el cofinanciamiento del 10%–20% y que no cubre el IVA.", "Si eliges crédito, exige la CAE por escrito y compara al menos 3 opciones.", "Haz coincidir el plazo del crédito con el uso que le darás al dinero."]
+  }
+};
+
+let currentNode = 'start';
+let path = [];
+
+function renderDecision(){
+  const box = document.getElementById('decisionBox');
+  const dots = document.getElementById('progressDots');
+
+  if(results[currentNode]){
+    const r = results[currentNode];
+    box.innerHTML = `
+      <div class="result-card">
+        <div class="eyebrow" style="margin-bottom:6px;">Ruta recomendada</div>
+        <h3>${r.title}</h3>
+        <p style="font-size:14.5px;color:#33413E;">${r.desc}</p>
+        <ul>${r.tips.map(t=>`<li>${t}</li>`).join('')}</ul>
+      </div>`;
+    dots.innerHTML = path.map(()=>'<span class="done"></span>').join('') + '<span class="done"></span>';
+    return;
+  }
+
+  const node = tree[currentNode];
+  box.innerHTML = `
+    <div class="q">${node.q}</div>
+    <div class="options">
+      ${node.options.map(o=>`<button class="opt-btn" onclick="choose('${o.next}')">${o.label}</button>`).join('')}
+    </div>
+  `;
+  dots.innerHTML = path.map(()=>'<span class="done"></span>').join('') + '<span></span><span></span>';
+}
+
+function choose(next){
+  path.push(currentNode);
+  currentNode = next;
+  renderDecision();
+}
+function restartDecision(){
+  currentNode='start';
+  path=[];
+  renderDecision();
+}
+renderDecision();
+
+/* ============ FLASHCARDS ============ */
+const terms = [
+  {t:"CAE", d:"Carga Anual Equivalente: el costo real y total de un crédito en un año, incluyendo tasa, notaría, impuestos, comisiones y seguros."},
+  {t:"DICOM", d:"Registro de morosidades. Caer en él dificulta el acceso a créditos y arriendos futuros; el crédito de consumo mal usado puede llevarte ahí."},
+  {t:"FOGAPE", d:"Fondo de Garantía para Pequeños Empresarios: el Estado avala entre el 70% y el 85% de tu deuda ante el banco."},
+  {t:"Cofinanciamiento", d:"Aporte propio que exige un fondo público: entre el 10% y el 20% del valor neto del proyecto."},
+  {t:"Flujo de Caja Libre", d:"El dinero que sobra en tu negocio después de pagar todos los costos. Tus cuotas de crédito no deberían superar el 30% de este monto."},
+  {t:"Fondo concursable", d:"Fondo público donde los proyectos compiten entre sí por puntaje; no todos los que postulan ganan."},
+];
+const flashGrid = document.getElementById('flashGrid');
+terms.forEach(term=>{
+  const el = document.createElement('div');
+  el.className='flash';
+  el.innerHTML = `
+    <div class="flash-inner">
+      <div class="flash-face front"><span>Término</span><b>${term.t}</b></div>
+      <div class="flash-face back">${term.d}</div>
+    </div>`;
+  el.addEventListener('click',()=>el.classList.toggle('flipped'));
+  flashGrid.appendChild(el);
+});
+
+/* ============ CHECKLIST ============ */
+const checks = [
+  "Define tu etapa: informal → Banigualdad o Capital Semilla; formal en expansión → FOGAPE o CRECE; innovador → CORFO.",
+  "Si postulas a un fondo público, ten ahorrado el cofinanciamiento y el dinero para el IVA.",
+  "Planifica tiempos: créditos se resuelven en días o semanas; fondos públicos tardan meses.",
+  "Cotiza la CAE por escrito en al menos 3 instituciones antes de firmar cualquier crédito.",
+  "Separa siempre las cuentas del negocio de tus finanzas personales."
+];
+const checklistDiv = document.getElementById('checklist');
+checks.forEach((c,i)=>{
+  const el = document.createElement('div');
+  el.className='checklist-item';
+  el.innerHTML = `<span class="num">${String(i+1).padStart(2,'0')}</span><span>${c}</span>`;
+  checklistDiv.appendChild(el);
+});
+</script>
+</body>
+</html>
